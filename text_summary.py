@@ -7,6 +7,7 @@ from spacy.lang.en.stop_words import STOP_WORDS
 def clean_text(text):
     """Remove special characters, citation references, and unnecessary whitespace."""
     text = re.sub(r"\[\d+\]", "", text)  # Remove citation references like [17]
+    text = re.sub(r"\[\w\]", "", text)  # Remove citation references like [e]
     text = re.sub(r"[^a-zA-Z0-9\s.,]", "", text)  # Keep periods for sentence segmentation
     text = re.sub(r"\s+", " ", text).strip()  # Remove extra spaces
     return text
