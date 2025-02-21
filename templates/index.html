@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarizer</title>
+    <link rel="stylesheet" href="../static/styles.css"/>
+</head>
+<body>
+    <header>
+        <h1>NLP Text Summarizer Project</h1>
+        <p>Your go-to tool for summarizing text efficiently</p>
+    </header>
+    <div class="container">
+        <form method="POST">
+            <div class="form-group">
+                <label for="text">Enter Text:</label>
+                <textarea id="text" name="text"></textarea>
+            </div>
+            <button type="submit">Summarize</button>
+        </form>
+        <div class="row">
+            <div class="column">
+                <h2>Original Text</h2>
+                <p id="original-text">{{rawdocs}}</p>
+                <div class="length-box">
+                    <p>Length: <span id="original-length">{{len_rawdocs}}</span> characters</p>
+                </div>
+            </div>
+            <div class="column">
+                <h2>Summary</h2>
+                <p id="summary-text">{{summary}}</p>
+                <div class="length-box">
+                    <p>Length: <span id="summary-length">{{len_summary}}</span> characters</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -4,7 +4,7 @@ from string import punctuation
 from heapq import nlargest
 from collections import Counter
 
-def extractive_summarizer(rawdocs, compression_ratio=0.3):
+def summarizer(rawdocs, compression_ratio=0.3):
     """Extractive summarization using NLP-based sentence ranking"""
     nlp = spacy.load("en_core_web_lg")
     doc = nlp(rawdocs)
