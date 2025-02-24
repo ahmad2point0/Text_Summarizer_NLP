@@ -5,18 +5,16 @@ from heapq import nlargest
 from spacy.lang.en.stop_words import STOP_WORDS
 
 def clean_text(text):
-    """Remove special characters, citation references, and unnecessary whitespace."""
-    text = re.sub(r"\[\d+\]", "", text)  # Remove citation references like [17]
-    text = re.sub(r"\[\w\]", "", text)  # Remove citation references like [e]
-    text = re.sub(r"[^a-zA-Z0-9\s.,]", "", text)  # Keep periods for sentence segmentation
-    text = re.sub(r"\s+", " ", text).strip()  # Remove extra spaces
+    text = re.sub(r"\[\d+\]", "", text) 
+    text = re.sub(r"\[\w\]", "", text)  
+    text = re.sub(r"[^a-zA-Z0-9\s.,]", "", text)  
+    text = re.sub(r"\s+", " ", text).strip()  
     return text
 
 def summarizer(rawdocs, compression_ratio=0.3):
-    """Extractive summarization using NLP-based sentence ranking."""
     nlp = spacy.load("en_core_web_lg")
     
-    cleaned_text = clean_text(rawdocs)  # Clean text before processing
+    cleaned_text = clean_text(rawdocs) 
     doc = nlp(cleaned_text)
     
     # Extract words, ignoring stopwords and punctuation
@@ -41,4 +39,3 @@ def summarizer(rawdocs, compression_ratio=0.3):
     
     summary = " ".join([sent.text for sent in summary_sentences])
     return summary, rawdocs, len(summary.split()), len(rawdocs.split())
-
